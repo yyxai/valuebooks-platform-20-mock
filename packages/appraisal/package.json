@@ -1,0 +1,17 @@
+{
+  "name": "@valuebooks/appraisal",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@valuebooks/shared": "*",
+    "hono": "^4.4.0"
+  },
+  "devDependencies": {
+    "vitest": "^1.6.0"
+  }
+}
