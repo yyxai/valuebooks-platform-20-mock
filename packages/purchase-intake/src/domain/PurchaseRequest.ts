@@ -32,6 +32,11 @@ export class PurchaseRequest {
   public shipment?: Shipment;
   public offer?: Offer;
   public payment?: Payment;
+  public pickupDate?: string;
+  public pickupTimeSlot?: string;
+  public useSokufuri: boolean = false;
+  public couponCode?: string;
+  public recycleCode?: string;
   public readonly createdAt: Date;
   public updatedAt: Date;
 
@@ -44,9 +49,27 @@ export class PurchaseRequest {
     this.updatedAt = new Date();
   }
 
-  static create(customer: Customer, boxDescription: BoxDescription): PurchaseRequest {
+  static create(
+    customer: Customer,
+    boxDescription: BoxDescription,
+    options?: {
+      pickupDate?: string;
+      pickupTimeSlot?: string;
+      useSokufuri?: boolean;
+      couponCode?: string;
+      recycleCode?: string;
+    }
+  ): PurchaseRequest {
     const id = crypto.randomUUID();
-    return new PurchaseRequest(id, customer, boxDescription);
+    const request = new PurchaseRequest(id, customer, boxDescription);
+    if (options) {
+      request.pickupDate = options.pickupDate;
+      request.pickupTimeSlot = options.pickupTimeSlot;
+      request.useSokufuri = options.useSokufuri ?? false;
+      request.couponCode = options.couponCode;
+      request.recycleCode = options.recycleCode;
+    }
+    return request;
   }
 
   submit(estimate: Estimate, trackingNumber: string, labelUrl: string): void {

@@ -17,11 +17,36 @@ export class PurchaseRequestService {
   ) {}
 
   async create(
-    customer: Customer,
-    boxData: { quantity: number; category: BookCategory; condition: BookCondition }
+    customerData: {
+      email: string;
+      name: string;
+      phone: string;
+      address: {
+        postalCode: string;
+        prefecture: string;
+        city: string;
+        street: string;
+        building?: string;
+      };
+    },
+    boxData: { quantity: number; category: BookCategory; condition: BookCondition },
+    options?: {
+      pickupDate?: string;
+      pickupTimeSlot?: string;
+      useSokufuri?: boolean;
+      couponCode?: string;
+      recycleCode?: string;
+    }
   ): Promise<PurchaseRequest> {
+    const customer: Customer = {
+      email: customerData.email,
+      name: customerData.name,
+      phone: customerData.phone,
+      address: customerData.address,
+    };
+
     const boxDescription = new BoxDescription(boxData.quantity, boxData.category, boxData.condition);
-    const request = PurchaseRequest.create(customer, boxDescription);
+    const request = PurchaseRequest.create(customer, boxDescription, options);
     this.requests.set(request.id, request);
     return request;
   }

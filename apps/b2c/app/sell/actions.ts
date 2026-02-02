@@ -14,6 +14,9 @@ export interface SubmissionResult {
   id: string;
   trackingNumber: string;
   labelUrl: string;
+  pickupDate: string;
+  pickupTimeSlot: string;
+  useSokufuri: boolean;
 }
 
 export interface SubmissionError {
@@ -25,12 +28,19 @@ export type SubmissionResponse = SubmissionResult | SubmissionError;
 
 export async function createSubmission(formData: {
   boxCount: number;
-  email: string;
+  pickupDate: string;
+  pickupTimeSlot: string;
+  useSokufuri: boolean;
+  couponCode?: string;
+  recycleCode?: string;
   name: string;
-  street: string;
+  email: string;
+  phone: string;
+  postalCode: string;
+  prefecture: string;
   city: string;
-  state: string;
-  zip: string;
+  street: string;
+  building?: string;
 }): Promise<SubmissionResponse> {
   try {
     const eventBus = new EventBus();
@@ -44,17 +54,26 @@ export async function createSubmission(formData: {
       {
         email: formData.email,
         name: formData.name,
+        phone: formData.phone,
         address: {
-          street: formData.street,
+          postalCode: formData.postalCode,
+          prefecture: formData.prefecture,
           city: formData.city,
-          state: formData.state,
-          zip: formData.zip,
+          street: formData.street,
+          building: formData.building,
         },
       },
       {
         quantity: formData.boxCount,
         category: BookCategory.Mixed,
         condition: BookCondition.Mixed,
+      },
+      {
+        pickupDate: formData.pickupDate,
+        pickupTimeSlot: formData.pickupTimeSlot,
+        useSokufuri: formData.useSokufuri,
+        couponCode: formData.couponCode,
+        recycleCode: formData.recycleCode,
       }
     );
 
@@ -65,6 +84,9 @@ export async function createSubmission(formData: {
       id: submitted.id,
       trackingNumber: submitted.shipment?.trackingNumber || '',
       labelUrl: submitted.shipment?.labelUrl || '',
+      pickupDate: formData.pickupDate,
+      pickupTimeSlot: formData.pickupTimeSlot,
+      useSokufuri: formData.useSokufuri,
     };
   } catch (error) {
     return {
