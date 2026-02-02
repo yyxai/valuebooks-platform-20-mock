@@ -3,10 +3,6 @@
 ## In Progress
 
 ## Pending
-- [ ] fulfillment/domain - Shipment, Tracking entities
-- [ ] fulfillment/services - FulfillmentService
-- [ ] fulfillment/repository - ShipmentRepository
-- [ ] fulfillment/api - API routes
 - [ ] apps/b2b - Business partner portal
 - [ ] apps/b2e - Employee desktop app
 - [ ] apps/admin - Administration portal
@@ -17,3 +13,7 @@
 - [x] listing - Complete domain package
 - [x] order-management - Complete domain package
 - [x] apps/b2c - Customer storefront (scaffold)
+- [x] fulfillment/domain - Shipment, Tracking entities
+- [x] fulfillment/services - FulfillmentService
+- [x] fulfillment/repository - ShipmentRepository
+- [x] fulfillment/api - API routes
