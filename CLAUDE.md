@@ -86,3 +86,22 @@ Domains communicate via events, not direct imports. Only `packages/shared` types
 1. Copy `.env.example` to `.env`
 2. Configure database connection
 3. Set API keys for carrier integration
+
+## Parallel Work Tracking
+
+Use `TODO.md` at project root to track progress across multiple terminals/sessions.
+
+**Format:**
+```markdown
+# In Progress
+- [ ] Terminal 1: <domain>/<component> - <description>
+- [ ] Terminal 2: <domain>/<component> - <description>
+
+# Done
+- [x] <domain>/<component> - <description>
+```
+
+**Rules:**
+- Update `TODO.md` when starting/completing work in any terminal
+- Check `TODO.md` before starting new work to avoid conflicts
+- Use specific paths (e.g., `order-management/services`) not vague descriptions
