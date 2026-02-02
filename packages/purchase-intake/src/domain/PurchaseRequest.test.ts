@@ -7,8 +7,14 @@ import { Estimate } from './Estimate.js';
 describe('PurchaseRequest', () => {
   const customer = {
     email: 'test@example.com',
-    name: 'Test User',
-    address: { street: '123 Main St', city: 'Boston', state: 'MA', zip: '02101' },
+    name: 'テストユーザー',
+    phone: '090-1234-5678',
+    address: {
+      postalCode: '100-0001',
+      prefecture: '東京都',
+      city: '千代田区',
+      street: '丸の内1-1-1',
+    },
   };
   const boxDescription = new BoxDescription(20, BookCategory.Fiction, BookCondition.Good);
 
