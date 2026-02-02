@@ -3,10 +3,11 @@ import { CarrierAdapter, ShippingLabel, TrackingEvent } from './CarrierAdapter.j
 
 export class MockCarrierAdapter implements CarrierAdapter {
   async generateLabel(address: {
-    street: string;
+    postalCode: string;
+    prefecture: string;
     city: string;
-    state: string;
-    zip: string;
+    street: string;
+    building?: string;
   }): Promise<ShippingLabel> {
     const trackingNumber = `MOCK${Date.now()}`;
     return {
