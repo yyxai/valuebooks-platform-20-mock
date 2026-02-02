@@ -39,6 +39,18 @@ export type { RefreshTokenRepository, RefreshToken } from './infrastructure/Refr
 export { InMemoryUserRepository } from './infrastructure/InMemoryUserRepository.js';
 export { InMemoryRoleRepository } from './infrastructure/InMemoryRoleRepository.js';
 export { InMemoryRefreshTokenRepository } from './infrastructure/InMemoryRefreshTokenRepository.js';
+export { PostgresUserRepository } from './infrastructure/PostgresUserRepository.js';
+export { PostgresRoleRepository } from './infrastructure/PostgresRoleRepository.js';
+export { PostgresRefreshTokenRepository } from './infrastructure/PostgresRefreshTokenRepository.js';
+
+// Infrastructure - Database
+export {
+  createConnection,
+  getConnection,
+  closeConnection,
+  healthCheck,
+} from './infrastructure/db/connection.js';
+export type { DatabaseConfig } from './infrastructure/db/connection.js';
 
 // Infrastructure - JWT
 export { JwtService, createDefaultJwtConfig } from './infrastructure/jwt.js';

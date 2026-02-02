@@ -1,0 +1,119 @@
+# Multi-stage Dockerfile for Node.js applications
+# Supports development, production, and specific app builds
+
+# =============================================================================
+# Base stage: Install dependencies
+# =============================================================================
+FROM node:20-alpine AS base
+
+WORKDIR /app
+
+# Install build dependencies for native modules
+RUN apk add --no-cache python3 make g++
+
+# Copy package files
+COPY package.json package-lock.json* ./
+COPY packages/shared/package.json ./packages/shared/
+COPY packages/user/package.json ./packages/user/
+COPY packages/purchase-intake/package.json ./packages/purchase-intake/
+COPY packages/appraisal/package.json ./packages/appraisal/
+COPY packages/listing/package.json ./packages/listing/
+COPY packages/order-management/package.json ./packages/order-management/
+COPY packages/fulfillment/package.json ./packages/fulfillment/
+COPY apps/b2c/package.json ./apps/b2c/
+# Note: b2b, b2e, admin apps not yet created - add COPY lines when they exist
+
+# Install all dependencies
+RUN npm ci --ignore-scripts
+
+# =============================================================================
+# Development stage: Full source with hot reload
+# =============================================================================
+FROM base AS development
+
+# Copy all source code
+COPY . .
+
+# Expose common ports
+EXPOSE 3000 4000 4001
+
+# Default command runs all services in dev mode
+CMD ["npm", "run", "dev"]
+
+# =============================================================================
+# API Development: Specifically for API/backend services
+# =============================================================================
+FROM base AS api-dev
+
+COPY . .
+
+WORKDIR /app
+
+ENV NODE_ENV=development
+ENV PORT=4000
+
+EXPOSE 4000
+
+# Run the API services (adjust based on actual API entry point)
+CMD ["npx", "tsx", "watch", "--clear-screen=false", "packages/user/src/api/server.ts"]
+
+# =============================================================================
+# B2C Development: Next.js frontend
+# =============================================================================
+FROM base AS b2c-dev
+
+COPY . .
+
+WORKDIR /app/apps/b2c
+
+ENV NODE_ENV=development
+ENV PORT=4001
+
+EXPOSE 4001
+
+CMD ["npm", "run", "dev", "--", "-p", "4001"]
+
+# =============================================================================
+# Builder stage: Build for production
+# =============================================================================
+FROM base AS builder
+
+COPY . .
+
+# Build all packages
+RUN npm run build
+
+# =============================================================================
+# Production API
+# =============================================================================
+FROM node:20-alpine AS api-production
+
+WORKDIR /app
+
+ENV NODE_ENV=production
+
+# Copy built artifacts and production dependencies
+COPY --from=builder /app/package.json ./
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/packages ./packages
+
+EXPOSE 4000
+
+CMD ["node", "packages/user/dist/api/server.js"]
+
+# =============================================================================
+# Production B2C (Next.js)
+# =============================================================================
+FROM node:20-alpine AS b2c-production
+
+WORKDIR /app
+
+ENV NODE_ENV=production
+
+COPY --from=builder /app/apps/b2c/.next/standalone ./
+COPY --from=builder /app/apps/b2c/.next/static ./apps/b2c/.next/static
+COPY --from=builder /app/apps/b2c/public ./apps/b2c/public
+
+EXPOSE 4001
+
+CMD ["node", "apps/b2c/server.js"]

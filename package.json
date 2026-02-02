@@ -8,7 +8,20 @@
     "test:watch": "vitest",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "docker:up": "docker compose --profile full up -d",
+    "docker:up:api": "docker compose --profile api up -d",
+    "docker:up:b2c": "docker compose --profile b2c up -d",
+    "docker:up:db": "docker compose --profile db up -d",
+    "docker:down": "docker compose --profile full down",
+    "docker:down:v": "docker compose --profile full down -v",
+    "docker:logs": "docker compose logs -f",
+    "docker:logs:api": "docker compose logs -f api",
+    "docker:logs:db": "docker compose logs -f db",
+    "docker:shell": "docker compose exec api sh",
+    "docker:psql": "docker compose exec db psql -U valuebooks -d valuebooks",
+    "db:migrate": "docker compose exec db psql -U valuebooks -d valuebooks -f /docker-entrypoint-initdb.d/001_create_users.sql && docker compose exec db psql -U valuebooks -d valuebooks -f /docker-entrypoint-initdb.d/002_create_roles.sql && docker compose exec db psql -U valuebooks -d valuebooks -f /docker-entrypoint-initdb.d/003_create_refresh_tokens.sql && docker compose exec db psql -U valuebooks -d valuebooks -f /docker-entrypoint-initdb.d/004_seed_system_roles.sql",
+    "db:reset": "docker compose --profile db down -v && docker compose --profile db up -d"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",

@@ -1,0 +1,118 @@
+# ValueBooks Platform - Docker Compose Development Environment
+#
+# Usage:
+#   Start everything:     docker compose --profile full up -d
+#   Start API only:       docker compose --profile api up -d
+#   Start DB only:        docker compose --profile db up -d
+#   Stop all:             docker compose --profile full down
+#   View logs:            docker compose logs -f
+#   Shell into API:       docker compose exec api sh
+#
+# Port Configuration (via .env file):
+#   DB_PORT=5433          PostgreSQL (default 5433 to avoid conflicts)
+#   API_PORT=4000         API server
+#   B2C_PORT=4001         Next.js frontend
+
+services:
+  # ===========================================================================
+  # PostgreSQL Database
+  # ===========================================================================
+  db:
+    profiles: ["db", "full"]
+    image: postgres:16-alpine
+    container_name: valuebooks-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-valuebooks}
+      POSTGRES_USER: ${POSTGRES_USER:-valuebooks}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-dev_password}
+      # Optimize for development
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --lc-collate=C --lc-ctype=C"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./infrastructure/db/migrations:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "${DB_PORT:-5433}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-valuebooks} -d ${POSTGRES_DB:-valuebooks}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - valuebooks
+
+  # ===========================================================================
+  # API Server (Hono-based backend services)
+  # ===========================================================================
+  api:
+    profiles: ["api", "full"]
+    build:
+      context: .
+      dockerfile: infrastructure/docker/Dockerfile.node
+      target: api-dev
+    container_name: valuebooks-api
+    restart: unless-stopped
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/packages/shared/node_modules
+      - /app/packages/user/node_modules
+    depends_on:
+      db:
+        condition: service_healthy
+        required: false
+    environment:
+      NODE_ENV: development
+      PORT: 4000
+      DATABASE_URL: ${DATABASE_URL:-postgres://valuebooks:dev_password@db:5432/valuebooks}
+      JWT_SECRET: ${JWT_SECRET:-dev-jwt-secret-change-in-production}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-dev-refresh-secret-change-in-production}
+    ports:
+      - "${API_PORT:-4000}:4000"
+    networks:
+      - valuebooks
+
+  # ===========================================================================
+  # B2C Frontend (Next.js)
+  # ===========================================================================
+  b2c:
+    profiles: ["b2c", "full"]
+    build:
+      context: .
+      dockerfile: infrastructure/docker/Dockerfile.node
+      target: b2c-dev
+    container_name: valuebooks-b2c
+    restart: unless-stopped
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/apps/b2c/node_modules
+      - /app/apps/b2c/.next
+    depends_on:
+      api:
+        condition: service_started
+        required: false
+    environment:
+      NODE_ENV: development
+      PORT: 4001
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:4000}
+    ports:
+      - "${B2C_PORT:-4001}:4001"
+    networks:
+      - valuebooks
+
+# =============================================================================
+# Networks
+# =============================================================================
+networks:
+  valuebooks:
+    driver: bridge
+    name: valuebooks-network
+
+# =============================================================================
+# Volumes
+# =============================================================================
+volumes:
+  postgres_data:
+    name: valuebooks-postgres-data
