@@ -6,7 +6,7 @@ describe('MockCarrierAdapter', () => {
   const adapter = new MockCarrierAdapter();
 
   it('should generate a shipping label', async () => {
-    const address = { street: '123 Main St', city: 'Boston', state: 'MA', zip: '02101' };
+    const address = { postalCode: '100-0001', prefecture: '東京都', city: '千代田区', street: '丸の内1-1-1' };
     const label = await adapter.generateLabel(address);
 
     expect(label.trackingNumber).toBeDefined();

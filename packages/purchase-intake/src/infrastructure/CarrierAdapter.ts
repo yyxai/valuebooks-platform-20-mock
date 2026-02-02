@@ -13,10 +13,11 @@ export interface TrackingEvent {
 
 export interface CarrierAdapter {
   generateLabel(address: {
-    street: string;
+    postalCode: string;
+    prefecture: string;
     city: string;
-    state: string;
-    zip: string;
+    street: string;
+    building?: string;
   }): Promise<ShippingLabel>;
 
   getTrackingStatus(trackingNumber: string): Promise<TrackingEvent[]>;
