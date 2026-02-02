@@ -2,12 +2,13 @@ export interface Customer {
   email: string;
   name: string;
   address: Address;
-  phone?: string;
+  phone: string;
 }
 
 export interface Address {
-  street: string;
+  postalCode: string;
+  prefecture: string;
   city: string;
-  state: string;
-  zip: string;
+  street: string;
+  building?: string;
 }
