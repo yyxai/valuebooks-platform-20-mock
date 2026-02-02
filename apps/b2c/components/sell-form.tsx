@@ -107,15 +107,15 @@ export function SellForm() {
           <CardTitle className="text-green-600">✓ お申し込み完了</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="bg-gray-50 p-4 rounded-md">
-            <p className="text-sm text-gray-500">集荷予定</p>
+          <div className="bg-background p-4 rounded-md">
+            <p className="text-sm text-text-secondary">集荷予定</p>
             <p className="font-semibold">
               {formatDate(confirmation.pickupDate)} {confirmation.pickupTimeSlot}
             </p>
           </div>
 
-          <div className="bg-gray-50 p-4 rounded-md">
-            <p className="text-sm text-gray-500">伝票番号</p>
+          <div className="bg-background p-4 rounded-md">
+            <p className="text-sm text-text-secondary">伝票番号</p>
             <p className="font-mono font-semibold">{confirmation.trackingNumber}</p>
           </div>
 
@@ -130,8 +130,8 @@ export function SellForm() {
             </Button>
           </a>
 
-          <div className="bg-blue-50 p-4 rounded-md">
-            <p className="text-sm text-gray-600">
+          <div className="bg-brand-teal-50 p-4 rounded-md">
+            <p className="text-sm text-text-secondary">
               選択プラン: {confirmation.useSokufuri ? 'ソクフリ買取' : '通常買取'}
             </p>
             {confirmation.useSokufuri && (
@@ -139,7 +139,7 @@ export function SellForm() {
             )}
           </div>
 
-          <div className="text-sm text-gray-600 space-y-2">
+          <div className="text-sm text-text-secondary space-y-2">
             <p className="font-semibold">次のステップ:</p>
             <ol className="list-decimal list-inside space-y-1">
               <li>本を箱に詰めてください</li>
@@ -160,14 +160,14 @@ export function SellForm() {
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">
           {error && (
-            <div className="bg-red-50 text-red-600 p-3 rounded-md text-sm">
+            <div className="bg-semantic-error/10 text-semantic-error p-3 rounded-md text-sm">
               {error}
             </div>
           )}
 
           {/* Section 1: Boxes & Pickup */}
           <div className="space-y-4">
-            <p className="text-sm font-medium text-gray-700">箱数・集荷</p>
+            <p className="text-sm font-medium text-text-primary">箱数・集荷</p>
 
             <div className="space-y-2">
               <Label htmlFor="boxCount">箱数</Label>
@@ -208,13 +208,13 @@ export function SellForm() {
 
           {/* Section 2: Sokufuri */}
           <div className="space-y-2">
-            <p className="text-sm font-medium text-gray-700">買取方法</p>
+            <p className="text-sm font-medium text-text-primary">買取方法</p>
             <SokufuriSelector value={useSokufuri} onChange={setUseSokufuri} />
           </div>
 
           {/* Section 3: Codes */}
           <div className="space-y-4">
-            <p className="text-sm font-medium text-gray-700">コード入力（任意）</p>
+            <p className="text-sm font-medium text-text-primary">コード入力（任意）</p>
 
             <div className="space-y-2">
               <Label htmlFor="couponCode">クーポンコード</Label>
@@ -234,7 +234,7 @@ export function SellForm() {
                 type="text"
                 placeholder="お持ちの場合は入力"
               />
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-text-secondary">
                 ValueBooksで購入した本を売る場合
               </p>
             </div>
@@ -242,7 +242,7 @@ export function SellForm() {
 
           {/* Section 4: Customer Info */}
           <div className="space-y-4">
-            <p className="text-sm font-medium text-gray-700">お客様情報</p>
+            <p className="text-sm font-medium text-text-primary">お客様情報</p>
 
             <div className="space-y-2">
               <Label htmlFor="name">お名前</Label>
@@ -289,7 +289,7 @@ export function SellForm() {
                 maxLength={8}
               />
               {isLookingUp && (
-                <p className="text-xs text-gray-500">住所を検索中...</p>
+                <p className="text-xs text-text-secondary">住所を検索中...</p>
               )}
             </div>
 

@@ -1,0 +1,277 @@
+/**
+ * VALUE BOOKS Design Tokens - CSS Variables
+ * Figmaファイルから取得したデザイントークンをCSS変数として定義
+ * https://www.figma.com/design/6pMPgH48np0uappqLqv1pK/VALUE-BOOKS-Design-Library
+ */
+
+ :root {
+    /* ============================================
+       Brand Colors (Figma: Brand Color)
+       ============================================ */
+    --vb-color-brand-primary: #009098; /* VB Teal */
+    --vb-color-brand-teal-50: #D8F3F4;
+    --vb-color-brand-teal-100: #D8F3F4;
+    --vb-color-brand-teal-200: #A4E0E3;
+    --vb-color-brand-teal-300: #4CC1C8;
+    --vb-color-brand-teal-400: #009098;
+    --vb-color-brand-teal-500: #009098;
+    --vb-color-brand-teal-600: #00737A;
+    --vb-color-brand-teal-700: #00475A;
+  
+    /* ============================================
+       Service Colors (Figma: Service Color)
+       ============================================ */
+    --vb-color-service-sell-blue: #0095D9; /* Sell Blue */
+    --vb-color-service-buy-orange: #A0330A; /* Buy Orange */
+    --vb-color-service-library-green: #00475A; /* Library Green */
+  
+    /* ============================================
+       Semantic Colors (Figma: Error & FocusColor, Accent Color)
+       ============================================ */
+    --vb-color-semantic-error: #DD0022; /* VB Red */
+    --vb-color-semantic-accent: #F0D03D; /* VB Yellow */
+    --vb-color-semantic-disabled: rgba(44, 44, 44, 0.3); /* Disabled Color */
+  
+    /* ============================================
+       Gray Scale (Figma: Text & Icon Colors, Background Color)
+       ============================================ */
+    --vb-color-gray-50: #F5F5F5;
+    --vb-color-gray-100: #CACACA;
+    --vb-color-gray-200: #999999;
+    --vb-color-gray-300: #6E6E6E;
+    --vb-color-gray-400: #999999;
+    --vb-color-gray-500: #2C2C2C;
+  
+    /* ============================================
+       Base Colors
+       ============================================ */
+    --vb-color-base-white: #FFFFFF;
+    --vb-color-base-black: #000000;
+  
+    /* ============================================
+       Cream Color (Figma: Background Color)
+       ============================================ */
+    --vb-color-cream-vb-cream: #F7F5EB; /* VB Cream */
+  
+    /* ============================================
+       Alias - Text Colors
+       ============================================ */
+    --vb-color-text-primary: var(--vb-color-gray-500); /* Gray500 */
+    --vb-color-text-secondary: var(--vb-color-gray-300); /* Gray300 */
+    --vb-color-text-inverse: var(--vb-color-base-white); /* White */
+    --vb-color-text-disabled: var(--vb-color-semantic-disabled);
+  
+    /* ============================================
+       Alias - Background Colors
+       ============================================ */
+    --vb-color-background-default: var(--vb-color-gray-50); /* Gray50 */
+    --vb-color-background-secondary: var(--vb-color-gray-100); /* Gray100 */
+    --vb-color-background-cream: var(--vb-color-cream-vb-cream); /* VB Cream */
+    --vb-color-background-disabled: var(--vb-color-gray-100); /* Gray100 */
+  
+    /* ============================================
+       Alias - Border Colors
+       ============================================ */
+    --vb-color-border-default: var(--vb-color-gray-300); /* Gray300 */
+    --vb-color-border-subtle: var(--vb-color-gray-200); /* Gray200 */
+  
+    /* ============================================
+       Alias - Brand Colors
+       ============================================ */
+    --vb-color-brand: var(--vb-color-brand-primary); /* VB Teal */
+  
+    /* ============================================
+       Alias - Service Colors
+       ============================================ */
+    --vb-color-service-sell: var(--vb-color-service-sell-blue);
+    --vb-color-service-buy: var(--vb-color-service-buy-orange);
+    --vb-color-service-library: var(--vb-color-service-library-green);
+  
+    /* ============================================
+       Alias - Semantic Colors
+       ============================================ */
+    --vb-color-semantic-error-alias: var(--vb-color-semantic-error);
+    --vb-color-semantic-accent-alias: var(--vb-color-semantic-accent);
+  
+    /* ============================================
+       Typography - Font Family (Figma: すべてのタイポグラフィ)
+       ============================================ */
+    --vb-font-family-base: 'Hiragino Sans', sans-serif;
+  
+    /* ============================================
+       Typography - Font Size Base
+       ============================================ */
+    --vb-font-size-base: 16px;
+  
+    /* ============================================
+       Typography - Font Weight
+       ============================================ */
+    --vb-font-weight-regular: 300; /* W3 */
+    --vb-font-weight-bold: 600; /* W6 */
+  
+    /* ============================================
+       Typography - Line Height
+       ============================================ */
+    --vb-line-height-base: 1.5;
+    --vb-line-height-tight: 1.4;
+  
+    /* ============================================
+       Typography - Letter Spacing
+       ============================================ */
+    --vb-letter-spacing-base: 0;
+  
+    /* ============================================
+       Typography - Title (Figma: Title/H1, H2, H3, H4)
+       ============================================ */
+    --vb-typography-title-h1-font-size: 32px;
+    --vb-typography-title-h1-font-weight: 600;
+    --vb-typography-title-h1-line-height: 1.5;
+    --vb-typography-title-h1-letter-spacing: 0;
+    --vb-typography-title-h1-font-family: var(--vb-font-family-base);
+  
+    --vb-typography-title-h2-font-size: 28px;
+    --vb-typography-title-h2-font-weight: 600;
+    --vb-typography-title-h2-line-height: 1.5;
+    --vb-typography-title-h2-letter-spacing: 0;
+    --vb-typography-title-h2-font-family: var(--vb-font-family-base);
+  
+    --vb-typography-title-h3-font-size: 24px;
+    --vb-typography-title-h3-font-weight: 600;
+    --vb-typography-title-h3-line-height: 1.5;
+    --vb-typography-title-h3-letter-spacing: 0;
+    --vb-typography-title-h3-font-family: var(--vb-font-family-base);
+  
+    --vb-typography-title-h4-font-size: 20px;
+    --vb-typography-title-h4-font-weight: 600;
+    --vb-typography-title-h4-line-height: 1.5;
+    --vb-typography-title-h4-letter-spacing: 0;
+    --vb-typography-title-h4-font-family: var(--vb-font-family-base);
+  
+    /* ============================================
+       Typography - Subtitle (Figma: Title/subtitle1, subtitle2, subtitle3)
+       ============================================ */
+    --vb-typography-subtitle-1-font-size: 16px;
+    --vb-typography-subtitle-1-font-weight: 600;
+    --vb-typography-subtitle-1-line-height: 1.5;
+    --vb-typography-subtitle-1-letter-spacing: 0;
+    --vb-typography-subtitle-1-font-family: var(--vb-font-family-base);
+  
+    --vb-typography-subtitle-2-font-size: 14px;
+    --vb-typography-subtitle-2-font-weight: 600;
+    --vb-typography-subtitle-2-line-height: 1.5;
+    --vb-typography-subtitle-2-letter-spacing: 0;
+    --vb-typography-subtitle-2-font-family: var(--vb-font-family-base);
+  
+    --vb-typography-subtitle-3-font-size: 12px;
+    --vb-typography-subtitle-3-font-weight: 600;
+    --vb-typography-subtitle-3-line-height: 1.399999976158142;
+    --vb-typography-subtitle-3-letter-spacing: 0;
+    --vb-typography-subtitle-3-font-family: var(--vb-font-family-base);
+  
+    /* ============================================
+       Typography - Body (Figma: Body/Body1, Body2, Caption1, Caption2)
+       ============================================ */
+    --vb-typography-body-1-font-size: 16px;
+    --vb-typography-body-1-font-weight: 300;
+    --vb-typography-body-1-line-height: 1.5;
+    --vb-typography-body-1-letter-spacing: 0;
+    --vb-typography-body-1-font-family: var(--vb-font-family-base);
+  
+    --vb-typography-body-2-font-size: 14px;
+    --vb-typography-body-2-font-weight: 300;
+    --vb-typography-body-2-line-height: 1.5;
+    --vb-typography-body-2-letter-spacing: 0;
+    --vb-typography-body-2-font-family: var(--vb-font-family-base);
+  
+    --vb-typography-caption-1-font-size: 12px;
+    --vb-typography-caption-1-font-weight: 300;
+    --vb-typography-caption-1-line-height: 1.5;
+    --vb-typography-caption-1-letter-spacing: 0;
+    --vb-typography-caption-1-font-family: var(--vb-font-family-base);
+  
+    --vb-typography-caption-2-font-size: 10px;
+    --vb-typography-caption-2-font-weight: 300;
+    --vb-typography-caption-2-line-height: 1.5;
+    --vb-typography-caption-2-letter-spacing: 0;
+    --vb-typography-caption-2-font-family: var(--vb-font-family-base);
+  
+    /* ============================================
+       Typography - Button (Figma: Button/Button1, Button2, Button3, Text Link1, Text Link2)
+       ============================================ */
+    --vb-typography-button-1-font-size: 16px;
+    --vb-typography-button-1-font-weight: 600;
+    --vb-typography-button-1-line-height: 1.5;
+    --vb-typography-button-1-letter-spacing: 0;
+    --vb-typography-button-1-font-family: var(--vb-font-family-base);
+  
+    --vb-typography-button-2-font-size: 14px;
+    --vb-typography-button-2-font-weight: 600;
+    --vb-typography-button-2-line-height: 1.5;
+    --vb-typography-button-2-letter-spacing: 0;
+    --vb-typography-button-2-font-family: var(--vb-font-family-base);
+  
+    --vb-typography-button-3-font-size: 12px;
+    --vb-typography-button-3-font-weight: 600;
+    --vb-typography-button-3-line-height: 1.399999976158142;
+    --vb-typography-button-3-letter-spacing: 0;
+    --vb-typography-button-3-font-family: var(--vb-font-family-base);
+  
+    --vb-typography-text-link-1-font-size: 14px;
+    --vb-typography-text-link-1-font-weight: 600;
+    --vb-typography-text-link-1-line-height: 1.5;
+    --vb-typography-text-link-1-letter-spacing: 0;
+    --vb-typography-text-link-1-font-family: var(--vb-font-family-base);
+  
+    --vb-typography-text-link-2-font-size: 12px;
+    --vb-typography-text-link-2-font-weight: 600;
+    --vb-typography-text-link-2-line-height: 1.399999976158142;
+    --vb-typography-text-link-2-letter-spacing: 0;
+    --vb-typography-text-link-2-font-family: var(--vb-font-family-base);
+  
+    /* ============================================
+       Spacing
+       ============================================ */
+    --vb-spacing-base: 4px;
+  
+    /* ============================================
+       Layout
+       ============================================ */
+    --vb-header-height: 64px;
+    --vb-footer-height: auto;
+  }
+  
+  /* ============================================
+     Vuetify Theme Integration
+     ============================================ */
+  .v-theme--light,
+  .v-theme--dark {
+    --v-theme-primary: var(--vb-color-brand-primary);
+    --v-theme-secondary: var(--vb-color-gray-300);
+    --v-theme-accent: var(--vb-color-semantic-accent);
+    --v-theme-error: var(--vb-color-semantic-error);
+    --v-theme-info: var(--vb-color-service-sell-blue);
+    --v-theme-success: var(--vb-color-service-library-green);
+    --v-theme-warning: var(--vb-color-service-buy-orange);
+    --v-theme-background: var(--vb-color-background-default);
+    --v-theme-surface: var(--vb-color-base-white);
+    --v-theme-on-primary: var(--vb-color-base-white);
+    --v-theme-on-secondary: var(--vb-color-base-white);
+    --v-theme-on-accent: var(--vb-color-base-black);
+    --v-theme-on-error: var(--vb-color-base-white);
+    --v-theme-on-info: var(--vb-color-base-white);
+    --v-theme-on-success: var(--vb-color-base-white);
+    --v-theme-on-warning: var(--vb-color-base-white);
+    --v-theme-on-background: var(--vb-color-text-primary);
+    --v-theme-on-surface: var(--vb-color-text-primary);
+  }
+  /* ===== Vuetify bridge (light) ===== */
+  .v-theme--light {
+      /* Vuetify is expecting "R, G, B" (commas) */
+      --v-theme-primary: 0, 144, 152;       /* #009098 */
+      --v-theme-surface: 255, 255, 255;     /* #ffffff */
+      --v-theme-background: 255, 255, 255;
+    
+      /* 必要なら追加（見た目が崩れる場合に足す） */
+      --v-theme-on-primary: 255, 255, 255;  /* ボタン文字色 */
+      --v-theme-on-surface: 17, 17, 17;     /* テキスト */
+    }

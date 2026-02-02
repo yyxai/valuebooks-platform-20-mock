@@ -1,3 +1,141 @@
+@import '../../../tokens.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  /* Typography - Headings */
+  .text-vb-h1 {
+    font-family: var(--vb-typography-title-h1-font-family);
+    font-size: var(--vb-typography-title-h1-font-size);
+    font-weight: var(--vb-typography-title-h1-font-weight);
+    line-height: var(--vb-typography-title-h1-line-height);
+    letter-spacing: var(--vb-typography-title-h1-letter-spacing);
+  }
+
+  .text-vb-h2 {
+    font-family: var(--vb-typography-title-h2-font-family);
+    font-size: var(--vb-typography-title-h2-font-size);
+    font-weight: var(--vb-typography-title-h2-font-weight);
+    line-height: var(--vb-typography-title-h2-line-height);
+    letter-spacing: var(--vb-typography-title-h2-letter-spacing);
+  }
+
+  .text-vb-h3 {
+    font-family: var(--vb-typography-title-h3-font-family);
+    font-size: var(--vb-typography-title-h3-font-size);
+    font-weight: var(--vb-typography-title-h3-font-weight);
+    line-height: var(--vb-typography-title-h3-line-height);
+    letter-spacing: var(--vb-typography-title-h3-letter-spacing);
+  }
+
+  .text-vb-h4 {
+    font-family: var(--vb-typography-title-h4-font-family);
+    font-size: var(--vb-typography-title-h4-font-size);
+    font-weight: var(--vb-typography-title-h4-font-weight);
+    line-height: var(--vb-typography-title-h4-line-height);
+    letter-spacing: var(--vb-typography-title-h4-letter-spacing);
+  }
+
+  /* Typography - Subtitles */
+  .text-vb-subtitle-1 {
+    font-family: var(--vb-typography-subtitle-1-font-family);
+    font-size: var(--vb-typography-subtitle-1-font-size);
+    font-weight: var(--vb-typography-subtitle-1-font-weight);
+    line-height: var(--vb-typography-subtitle-1-line-height);
+    letter-spacing: var(--vb-typography-subtitle-1-letter-spacing);
+  }
+
+  .text-vb-subtitle-2 {
+    font-family: var(--vb-typography-subtitle-2-font-family);
+    font-size: var(--vb-typography-subtitle-2-font-size);
+    font-weight: var(--vb-typography-subtitle-2-font-weight);
+    line-height: var(--vb-typography-subtitle-2-line-height);
+    letter-spacing: var(--vb-typography-subtitle-2-letter-spacing);
+  }
+
+  .text-vb-subtitle-3 {
+    font-family: var(--vb-typography-subtitle-3-font-family);
+    font-size: var(--vb-typography-subtitle-3-font-size);
+    font-weight: var(--vb-typography-subtitle-3-font-weight);
+    line-height: var(--vb-typography-subtitle-3-line-height);
+    letter-spacing: var(--vb-typography-subtitle-3-letter-spacing);
+  }
+
+  /* Typography - Body */
+  .text-vb-body-1 {
+    font-family: var(--vb-typography-body-1-font-family);
+    font-size: var(--vb-typography-body-1-font-size);
+    font-weight: var(--vb-typography-body-1-font-weight);
+    line-height: var(--vb-typography-body-1-line-height);
+    letter-spacing: var(--vb-typography-body-1-letter-spacing);
+  }
+
+  .text-vb-body-2 {
+    font-family: var(--vb-typography-body-2-font-family);
+    font-size: var(--vb-typography-body-2-font-size);
+    font-weight: var(--vb-typography-body-2-font-weight);
+    line-height: var(--vb-typography-body-2-line-height);
+    letter-spacing: var(--vb-typography-body-2-letter-spacing);
+  }
+
+  /* Typography - Captions */
+  .text-vb-caption-1 {
+    font-family: var(--vb-typography-caption-1-font-family);
+    font-size: var(--vb-typography-caption-1-font-size);
+    font-weight: var(--vb-typography-caption-1-font-weight);
+    line-height: var(--vb-typography-caption-1-line-height);
+    letter-spacing: var(--vb-typography-caption-1-letter-spacing);
+  }
+
+  .text-vb-caption-2 {
+    font-family: var(--vb-typography-caption-2-font-family);
+    font-size: var(--vb-typography-caption-2-font-size);
+    font-weight: var(--vb-typography-caption-2-font-weight);
+    line-height: var(--vb-typography-caption-2-line-height);
+    letter-spacing: var(--vb-typography-caption-2-letter-spacing);
+  }
+
+  /* Typography - Buttons */
+  .text-vb-button-1 {
+    font-family: var(--vb-typography-button-1-font-family);
+    font-size: var(--vb-typography-button-1-font-size);
+    font-weight: var(--vb-typography-button-1-font-weight);
+    line-height: var(--vb-typography-button-1-line-height);
+    letter-spacing: var(--vb-typography-button-1-letter-spacing);
+  }
+
+  .text-vb-button-2 {
+    font-family: var(--vb-typography-button-2-font-family);
+    font-size: var(--vb-typography-button-2-font-size);
+    font-weight: var(--vb-typography-button-2-font-weight);
+    line-height: var(--vb-typography-button-2-line-height);
+    letter-spacing: var(--vb-typography-button-2-letter-spacing);
+  }
+
+  .text-vb-button-3 {
+    font-family: var(--vb-typography-button-3-font-family);
+    font-size: var(--vb-typography-button-3-font-size);
+    font-weight: var(--vb-typography-button-3-font-weight);
+    line-height: var(--vb-typography-button-3-line-height);
+    letter-spacing: var(--vb-typography-button-3-letter-spacing);
+  }
+
+  /* Typography - Links */
+  .text-vb-link-1 {
+    font-family: var(--vb-typography-text-link-1-font-family);
+    font-size: var(--vb-typography-text-link-1-font-size);
+    font-weight: var(--vb-typography-text-link-1-font-weight);
+    line-height: var(--vb-typography-text-link-1-line-height);
+    letter-spacing: var(--vb-typography-text-link-1-letter-spacing);
+  }
+
+  .text-vb-link-2 {
+    font-family: var(--vb-typography-text-link-2-font-family);
+    font-size: var(--vb-typography-text-link-2-font-size);
+    font-weight: var(--vb-typography-text-link-2-font-weight);
+    line-height: var(--vb-typography-text-link-2-line-height);
+    letter-spacing: var(--vb-typography-text-link-2-letter-spacing);
+  }
+}

@@ -13,7 +13,7 @@ export function SokufuriSelector({ value, onChange }: SokufuriSelectorProps) {
       <div
         className={cn(
           'border rounded-lg p-4 cursor-pointer transition-colors',
-          !value ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300'
+          !value ? 'border-brand bg-brand-teal-50' : 'border-border-subtle hover:border-border'
         )}
         onClick={() => onChange(false)}
       >
@@ -21,14 +21,14 @@ export function SokufuriSelector({ value, onChange }: SokufuriSelectorProps) {
           <div
             className={cn(
               'w-5 h-5 rounded-full border-2 flex items-center justify-center',
-              !value ? 'border-blue-500' : 'border-gray-300'
+              !value ? 'border-brand' : 'border-border'
             )}
           >
-            {!value && <div className="w-2.5 h-2.5 rounded-full bg-blue-500" />}
+            {!value && <div className="w-2.5 h-2.5 rounded-full bg-brand" />}
           </div>
           <div>
             <p className="font-medium">通常買取</p>
-            <p className="text-sm text-gray-600">査定 → 確認 → 入金</p>
+            <p className="text-sm text-text-secondary">査定 → 確認 → 入金</p>
           </div>
         </div>
       </div>
@@ -36,7 +36,7 @@ export function SokufuriSelector({ value, onChange }: SokufuriSelectorProps) {
       <div
         className={cn(
           'border rounded-lg p-4 cursor-pointer transition-colors',
-          value ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300'
+          value ? 'border-brand bg-brand-teal-50' : 'border-border-subtle hover:border-border'
         )}
         onClick={() => onChange(true)}
       >
@@ -44,14 +44,14 @@ export function SokufuriSelector({ value, onChange }: SokufuriSelectorProps) {
           <div
             className={cn(
               'w-5 h-5 rounded-full border-2 flex items-center justify-center',
-              value ? 'border-blue-500' : 'border-gray-300'
+              value ? 'border-brand' : 'border-border'
             )}
           >
-            {value && <div className="w-2.5 h-2.5 rounded-full bg-blue-500" />}
+            {value && <div className="w-2.5 h-2.5 rounded-full bg-brand" />}
           </div>
           <div className="flex-1">
             <p className="font-medium">ソクフリ買取</p>
-            <p className="text-sm text-gray-600">査定 → 即入金</p>
+            <p className="text-sm text-text-secondary">査定 → 即入金</p>
             <div className="mt-2 flex flex-wrap gap-2">
               <span className="inline-flex items-center text-xs bg-green-100 text-green-700 px-2 py-1 rounded">
                 ✓ 査定額+20%（ポイント付与）
