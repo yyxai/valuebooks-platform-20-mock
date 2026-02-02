@@ -11,7 +11,8 @@ describe('FulfillmentService', () => {
   let service: FulfillmentService;
   let repository: InMemoryShipmentRepository;
   let eventBus: EventBus;
-  let publishSpy: ReturnType<typeof vi.spyOn>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let publishSpy: any;
 
   const validAddress = Address.create({
     name: 'John Doe',
