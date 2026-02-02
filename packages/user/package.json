@@ -1,0 +1,15 @@
+{
+  "name": "@valuebooks/user",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@valuebooks/shared": "*",
+    "hono": "^4.0.0"
+  }
+}
